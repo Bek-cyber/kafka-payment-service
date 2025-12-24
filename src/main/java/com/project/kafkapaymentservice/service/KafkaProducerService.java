@@ -14,6 +14,6 @@ public class KafkaProducerService {
     public void sendPaymentEvent(String paymentId, String payload) {
         kafkaTemplate.send("payments", paymentId, payload);
 
-        log.info("Event sent. key={}, payload={}", paymentId, payload);
+        log.info("Kafka producer: event sent. key={}, payload={}", paymentId, payload);
     }
 }
