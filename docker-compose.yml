@@ -25,3 +25,18 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+
+  postgres:
+    image: postgres:16
+    container_name: kafka-postgres
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: kafka_db
+      POSTGRES_USER: kafka
+      POSTGRES_PASSWORD: kafka
+    volumes:
+      - kafka_pg_data:/var/lib/postgresql/data
+
+volumes:
+  kafka_pg_data:
